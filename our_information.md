@@ -12,8 +12,11 @@
 | **技能特长** | 1. **开发能力**：熟练掌握移动端原生开发（Android/iOS）、后端接口开发、数据库设计与优化；<br>2. **设计能力**：掌握UI/UX设计基础，能独立完成APP界面与交互流程设计；<br>3. **项目管理**：熟悉甘特图编制、需求分析、测试流程，具备小型项目全流程管理能力；<br>4. **工具掌握**：熟练使用Android Studio/Xcode、Figma、MySQL Workbench、Git等开发/设计工具。 |
 | **获奖/证书** | 1. **校级编程竞赛二等奖**（202X）：基于拼豆创意社APP核心算法优化参赛；<br>2. **软件设计师（初级）证书**（202X）；<br>3. **普通话二级甲等证书**。 |
 
-## Personal Information
-# ENGLISH NAME: Orion Wong
-# LOCAL NAME: 王宇
-# SCHOOL: CCNU
-# MAJOR: Software Engineering
+### Personal Information
+
+| ITEM | STUFF |
+| ----- | ---- |
+| **ENGLISH NAME**| Orion Wong|
+| **LOCAL NAME**| 王宇|
+| **SCHOOL**| CCNU|
+| **MAJOR**| Software Engineering|

@@ -1,4 +1,4 @@
-### 个人简历
+![c1e2bbd4c985c5f160e9e587c5e720f6](https://github.com/user-attachments/assets/15879f61-a891-445e-9d04-dabe0e964ff4)### 个人简历
 
 | 项目         | 内容                                                                 |
 |--------------|----------------------------------------------------------------------|
@@ -21,5 +21,6 @@
 | **SCHOOL**| CCNU|
 | **MAJOR**| Software Engineering|
 
-![c1e2bbd4c985c5f160e9e587c5e720f6](https://github.com/user-attachments/assets/abd5a1c5-9deb-422d-bdc1-1433b8594bfc)
+![c1e2bbd4c985c5f160e9e587c5e720f6](https://github.com/user-attachments/assets/7d95b82c-7c1b-494b-bc5e-9d4edf5147ab)
+
 

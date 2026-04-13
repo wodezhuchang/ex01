@@ -1,5 +1,17 @@
 # 所有路径建议用 os.path.join("data", "xxx.csv")
 
+项目根目录
+├── main.py        # 程序入口
+├── core/          # 核心后端逻辑文件夹，所有后端函数都放这里
+│   ├── __init__.py  # 空文件，告诉Python这是个可导入的包
+│   ├── csv_init.py  # CSV初始化函数
+│   ├── csv_utils.py # CSV读写工具
+│   ├── book_manager.py # 图书管理逻辑
+│   └── user_manager.py # 用户管理逻辑
+├── ui/            # Tkinter前端界面代码
+└── data/          # 存放CSV数据文件
+
+
 # 【后端模块】Core Issues（纯 Python 函数）
 
 CORE-001：创建 CSV 文件与表头初始化

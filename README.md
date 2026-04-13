@@ -1,3 +1,5 @@
+# 所有路径建议用 os.path.join("data", "xxx.csv")
+
 # 【后端模块】Core Issues（纯 Python 函数）
 
 CORE-001：创建 CSV 文件与表头初始化

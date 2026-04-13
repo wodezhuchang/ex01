@@ -8,6 +8,7 @@
 - - csv_utils.py # CSV读写工具
 - - book_manager.py # 图书管理逻辑
 - - user_manager.py # 用户管理逻辑
+  - import_export.py # 图书批量导入逻辑
 - ui/            # Tkinter前端界面代码
 - data/          # 存放CSV数据文件
 

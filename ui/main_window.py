@@ -55,12 +55,15 @@ class MainWindow:
             page.pack_forget()
     
     def show_page(self, page_name):
-        """切换页面"""
         # 隐藏所有页面
         for page in self.pages.values():
             page.pack_forget()
         # 显示目标页面
         self.pages[page_name].pack(fill="both", expand=True)
+        # 如果进入首页，更新欢迎信息
+        if page_name == "home":
+            self.pages["home"].update_welcome()
+
     
     def run(self):
         """启动主循环"""

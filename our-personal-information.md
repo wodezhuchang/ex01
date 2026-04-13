@@ -17,17 +17,18 @@
 
 ### Personal Information
 
-| ITEM | STUFF |
+| Item | Stuff |
 | ----- | ---- |
-| **ENGLISH NAME**| Orion Wong|
-| **LOCAL NAME**| 王宇|
-| **SCHOOL**| CCNU|
-| **MAJOR**| Software Engineering|
-| **EMAIL**| orion10110@outlook.com|
+| **English Name**| Orion Wong|
+| **Local Name**| 王宇|
+| **Photo**| ![c1e2bbd4c985c5f160e9e587c5e720f6](https://github.com/user-attachments/assets/7d95b82c-7c1b-494b-bc5e-9d4edf5147ab)|
+| **School**| CCNU|
+| **Major**| Software Engineering|
+| **E-mail**| orion10110@outlook.com|
 | **Algorithmic Skills**| 2 years of experience in ACM programming contests. Proficient in common data structures and classic algorithms including dynamic programming, greedy algorithms, graph theory, number theory, etc. Skilled in time & space complexity analysis and logical deduction. Codeforces Rating 1616 (Blue Rank)[](https://codeforces.com/profile/OrionWong)|
 | **Programming Skills**| Proficient in algorithm implementation and rapid debugging with C++, with highly rigorous coding quality.|
 
 
-![c1e2bbd4c985c5f160e9e587c5e720f6](https://github.com/user-attachments/assets/7d95b82c-7c1b-494b-bc5e-9d4edf5147ab)
+
 
 

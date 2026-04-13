@@ -4,8 +4,8 @@
 - main.py        # 程序入口
 - core/          # 核心后端逻辑文件夹，所有后端函数都放这里
   - __init__.py  # 空文件，告诉Python这是个可导入的包
-  - csv_init.py  # CSV初始化函数
-  - csv_utils.py # CSV读写工具
+  - init_csv.py  # CSV初始化函数
+  - utils_csv.py # CSV读写工具
   - book_manager.py # 图书管理逻辑
   - user_manager.py # 用户管理逻辑
   - import_export.py # 图书批量导入逻辑

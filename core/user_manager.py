@@ -1,5 +1,5 @@
 import os
-from core.csv_utils import read_csv, append_csv, write_csv
+from core.utils_csv import read_csv, append_csv, write_csv
 
 USERS_FILE = os.path.join('data', 'users.csv')
 

@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from core.csv_utils import read_csv, write_csv, append_csv, get_all_data
+from core.utils_csv import read_csv, write_csv, append_csv
 
 BORROWS_FILE = os.path.join('data', 'borrows.csv')
 BOOKS_FILE = os.path.join('data', 'books.csv')

@@ -1,0 +1,53 @@
+图书管理系统
+├── 核心层（Core）
+│   ├── CSV文件工具（utils_csv）
+│   │   ├── 读取CSV（read_csv）
+│   │   ├── 写入CSV（write_csv）
+│   │   └── 追加CSV（append_csv）
+│   ├── 用户管理（user_manager）
+│   │   ├── 用户注册（user_register）
+│   │   ├── 用户登录（user_login）
+│   │   ├── 密码修改（change_password）
+│   │   ├── 用户存在校验（user_exists）
+│   │   └── 获取所有用户（get_all_users）
+│   ├── 图书管理（book_manager）
+│   │   ├── 获取所有图书（get_all_books）
+│   │   ├── 添加图书（add_book）
+│   │   ├── 删除图书（delete_book）
+│   │   ├── 修改图书（update_book）
+│   │   └── 图书模糊查询（query_books）
+│   ├── 借阅管理（borrow_manager）
+│   │   ├── 图书借阅（borrow_book）
+│   │   ├── 图书归还（return_book）
+│   │   ├── 查询个人借阅记录（get_user_borrows）
+│   │   ├── 逾期校验（check_overdue）
+│   │   └── 获取所有借阅记录（get_all_borrows）
+│   ├── 数据初始化（init_csv）
+│   │   └── 初始化CSV文件（init_csv_files）
+│   └── 批量导入导出（import_export）
+│       └── 批量导入图书（import_books_from_csv）
+├── 界面层（UI）
+│   ├── 主窗口（main_window）
+│   │   ├── 窗口基础配置（标题/尺寸/布局）
+│   │   ├── 页面容器管理
+│   │   ├── 页面切换（show_page）
+│   │   └── 主循环启动（run）
+│   ├── 登录页（login_page）
+│   │   ├── 登录表单（用户名/密码输入）
+│   │   ├── 登录校验（_login）
+│   │   ├── 注册弹窗（_show_register）
+│   │   └── 默认管理员初始化（_init_default_admin）
+│   ├── 首页（home_page）
+│   │   ├── 欢迎信息展示（update_welcome）
+│   │   ├── 功能按钮（按角色展示）
+│   │   │   ├── 管理员：图书管理/借阅管理/个人中心/退出
+│   │   │   └── 普通用户：借阅管理/个人中心/退出
+│   │   └── 状态栏信息展示
+│   ├── 待实现页面（注释中预留）
+│   │   ├── 图书管理页（book_page）
+│   │   ├── 借阅管理页（borrow_page）
+│   │   └── 个人中心页（user_page）
+└── 数据层（Data）
+    ├── users.csv（用户信息：user_id/username/password/role）
+    ├── books.csv（图书信息：book_id/title/author/isbn/count）
+    └── borrows.csv（借阅记录：borrow_id/user_id/book_id/borrow_date/return_date/status）

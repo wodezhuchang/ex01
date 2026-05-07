@@ -13,56 +13,95 @@ class UserPage(tk.Frame):
         self.back_btn = tk.Button(
             self,
             text="返回首页",
-            font=("Helvetica", 12),
+            font=("Helvetica", 10),
             bg="#95a5a6",
             fg="white",
             activebackground="#7f8c8d",
             command=lambda: self.controller.show_page("home")
         )
-        self.back_btn.pack(side=tk.TOP, anchor=tk.NW, padx=20, pady=10)
+        self.back_btn.pack(side=tk.TOP, anchor=tk.NW, padx=15, pady=8)
 
         # ========== 用户信息区 ==========
-        self.info_frame = tk.LabelFrame(self, text="个人信息", bg="white", padx=50, pady=30, font=("Helvetica", 14, "bold"))
-        self.info_frame.pack(pady=10, padx=20, fill="x")
+        self.info_frame = tk.LabelFrame(self, text="个人信息", bg="white", padx=20, pady=10, font=("Helvetica", 12, "bold"))
+        self.info_frame.pack(pady=5, padx=15, fill="x")
         
-        self._show_user_info()
+        self.user_id_var = tk.StringVar(value="")
+        self.username_var = tk.StringVar(value="")
+        self.role_var = tk.StringVar(value="")
         
-        # ========== 修改密码区 ==========
-        self.pwd_frame = tk.LabelFrame(self, text="修改密码", bg="white", padx=50, pady=30, font=("Helvetica", 14, "bold"))
-        self.pwd_frame.pack(pady=10, padx=20, fill="x")
+        info_grid = tk.Frame(self.info_frame, bg="white")
+        info_grid.pack()
         
-        tk.Label(self.pwd_frame, text="原密码：", font=("Helvetica", 12), bg="white").grid(row=0, column=0, sticky=tk.W, pady=10)
-        self.entry_old_pwd = tk.Entry(self.pwd_frame, font=("Helvetica", 12), width=25, show="*")
-        self.entry_old_pwd.grid(row=0, column=1, pady=10)
+        tk.Label(info_grid, text="用户ID：", font=("Helvetica", 10), bg="white").grid(row=0, column=0, sticky=tk.W, pady=3)
+        self.label_user_id = tk.Label(info_grid, textvariable=self.user_id_var, font=("Helvetica", 10), bg="white", fg="#27ae60")
+        self.label_user_id.grid(row=0, column=1, sticky=tk.W, pady=3)
         
-        tk.Label(self.pwd_frame, text="新密码：", font=("Helvetica", 12), bg="white").grid(row=1, column=0, sticky=tk.W, pady=10)
-        self.entry_new_pwd = tk.Entry(self.pwd_frame, font=("Helvetica", 12), width=25, show="*")
-        self.entry_new_pwd.grid(row=1, column=1, pady=10)
+        tk.Label(info_grid, text="用户名：", font=("Helvetica", 10), bg="white").grid(row=1, column=0, sticky=tk.W, pady=3)
+        self.label_username = tk.Label(info_grid, textvariable=self.username_var, font=("Helvetica", 10), bg="white", fg="#27ae60")
+        self.label_username.grid(row=1, column=1, sticky=tk.W, pady=3)
         
-        tk.Label(self.pwd_frame, text="确认密码：", font=("Helvetica", 12), bg="white").grid(row=2, column=0, sticky=tk.W, pady=10)
-        self.entry_confirm_pwd = tk.Entry(self.pwd_frame, font=("Helvetica", 12), width=25, show="*")
-        self.entry_confirm_pwd.grid(row=2, column=1, pady=10)
+        tk.Label(info_grid, text="角色：", font=("Helvetica", 10), bg="white").grid(row=2, column=0, sticky=tk.W, pady=3)
+        self.label_role = tk.Label(info_grid, textvariable=self.role_var, font=("Helvetica", 10), bg="white")
+        self.label_role.grid(row=2, column=1, sticky=tk.W, pady=3)
         
+        # ========== 修改密码区（三项放同一行）==========
+        self.pwd_frame = tk.LabelFrame(self, text="修改密码", bg="white", padx=15, pady=10, font=("Helvetica", 12, "bold"))
+        self.pwd_frame.pack(pady=5, padx=15, fill="x")
+        
+        pwd_grid = tk.Frame(self.pwd_frame, bg="white")
+        pwd_grid.pack()
+        
+        # 三个输入框放在同一行
+        tk.Label(pwd_grid, text="原密码：", font=("Helvetica", 10), bg="white").grid(row=0, column=0, sticky=tk.W, padx=5)
+        self.entry_old_pwd = tk.Entry(pwd_grid, font=("Helvetica", 10), width=15, show="*")
+        self.entry_old_pwd.grid(row=0, column=1, padx=5)
+        
+        tk.Label(pwd_grid, text="新密码：", font=("Helvetica", 10), bg="white").grid(row=0, column=2, sticky=tk.W, padx=5)
+        self.entry_new_pwd = tk.Entry(pwd_grid, font=("Helvetica", 10), width=15, show="*")
+        self.entry_new_pwd.grid(row=0, column=3, padx=5)
+        
+        tk.Label(pwd_grid, text="确认密码：", font=("Helvetica", 10), bg="white").grid(row=0, column=4, sticky=tk.W, padx=5)
+        self.entry_confirm_pwd = tk.Entry(pwd_grid, font=("Helvetica", 10), width=15, show="*")
+        self.entry_confirm_pwd.grid(row=0, column=5, padx=5)
+        
+        # 按钮放在第二行
         tk.Button(
-            self.pwd_frame,
+            pwd_grid,
             text="确认修改",
-            font=("Helvetica", 12),
+            font=("Helvetica", 10),
             bg="#3498db",
             fg="white",
+            width=10,
             command=self._change_pwd
-        ).grid(row=3, column=0, columnspan=2, pady=20)
+        ).grid(row=1, column=0, columnspan=6, pady=8)
         
         # ========== 我的借阅统计 ==========
-        self.stats_frame = tk.LabelFrame(self, text="借阅统计", bg="white", padx=50, pady=20, font=("Helvetica", 14, "bold"))
-        self.stats_frame.pack(pady=10, padx=20, fill="x")
+        self.stats_frame = tk.LabelFrame(self, text="借阅统计", bg="white", padx=15, pady=8, font=("Helvetica", 12, "bold"))
+        self.stats_frame.pack(pady=5, padx=15, fill="x")
         
-        self._show_borrow_stats()
+        self.stats_total_var = tk.StringVar(value="0")
+        self.stats_borrowed_var = tk.StringVar(value="0")
+        self.stats_returned_var = tk.StringVar(value="0")
+        
+        stats_grid = tk.Frame(self.stats_frame, bg="white")
+        stats_grid.pack()
+        
+        total_frame = tk.LabelFrame(stats_grid, text="总借阅", bg="#ecf0f1", padx=25, pady=6)
+        total_frame.grid(row=0, column=0, padx=8)
+        tk.Label(total_frame, textvariable=self.stats_total_var, font=("Helvetica", 16, "bold"), bg="#ecf0f1", fg="#2c3e50").pack()
+        
+        borrowed_frame = tk.LabelFrame(stats_grid, text="未归还", bg="#ffeaa7", padx=25, pady=6)
+        borrowed_frame.grid(row=0, column=1, padx=8)
+        tk.Label(borrowed_frame, textvariable=self.stats_borrowed_var, font=("Helvetica", 16, "bold"), bg="#ffeaa7", fg="#d63031").pack()
+        
+        returned_frame = tk.LabelFrame(stats_grid, text="已归还", bg="#dfe6e9", padx=25, pady=6)
+        returned_frame.grid(row=0, column=2, padx=8)
+        tk.Label(returned_frame, textvariable=self.stats_returned_var, font=("Helvetica", 16, "bold"), bg="#dfe6e9", fg="#00b894").pack()
         
         # ========== 我的借阅记录列表 ==========
-        self.borrow_list_frame = tk.LabelFrame(self, text="我的借阅记录", bg="white", padx=20, pady=20, font=("Helvetica", 14, "bold"))
-        self.borrow_list_frame.pack(pady=10, padx=20, fill="both", expand=True)
+        self.borrow_list_frame = tk.LabelFrame(self, text="我的借阅记录", bg="white", padx=10, pady=10, font=("Helvetica", 12, "bold"))
+        self.borrow_list_frame.pack(pady=5, padx=15, fill="both", expand=True)
         
-        # 借阅记录表格
         self.tree = ttk.Treeview(
             self.borrow_list_frame,
             columns=("borrow_id", "book_title", "author", "borrow_date", "return_date", "status"),
@@ -76,82 +115,49 @@ class UserPage(tk.Frame):
         self.tree.heading("return_date", text="归还日期")
         self.tree.heading("status", text="状态")
         
-        self.tree.column("borrow_id", width=80)
-        self.tree.column("book_title", width=200)
-        self.tree.column("author", width=120)
-        self.tree.column("borrow_date", width=120)
-        self.tree.column("return_date", width=120)
-        self.tree.column("status", width=80)
+        self.tree.column("borrow_id", width=60)
+        self.tree.column("book_title", width=150)
+        self.tree.column("author", width=90)
+        self.tree.column("borrow_date", width=90)
+        self.tree.column("return_date", width=90)
+        self.tree.column("status", width=60)
         
         self.tree.pack(fill="both", expand=True)
-        
-        self._refresh_borrow_list()
 
     def refresh(self):
-        """刷新页面数据"""
-        self._refresh_borrow_list()
+        self._update_user_info()
         self._update_stats()
+        self._refresh_borrow_list()
 
-    def _show_user_info(self):
-        """显示用户基本信息"""
+    def _update_user_info(self):
         user = self.controller.current_user
-        if not user:
-            tk.Label(self.info_frame, text="未登录", font=("Helvetica", 16), bg="white").pack()
-            return
-        
-        row = 0
-        tk.Label(self.info_frame, text="用户ID：", font=("Helvetica", 12), bg="white").grid(row=row, column=0, sticky=tk.W, pady=8)
-        tk.Label(self.info_frame, text=user["user_id"], font=("Helvetica", 12), bg="white", fg="#27ae60").grid(row=row, column=1, sticky=tk.W, pady=8)
-        row += 1
-        
-        tk.Label(self.info_frame, text="用户名：", font=("Helvetica", 12), bg="white").grid(row=row, column=0, sticky=tk.W, pady=8)
-        tk.Label(self.info_frame, text=user["username"], font=("Helvetica", 12), bg="white", fg="#27ae60").grid(row=row, column=1, sticky=tk.W, pady=8)
-        row += 1
-        
-        tk.Label(self.info_frame, text="角色：", font=("Helvetica", 12), bg="white").grid(row=row, column=0, sticky=tk.W, pady=8)
-        role_text = "管理员" if user.get("role") == "admin" else "普通用户"
-        role_color = "#e74c3c" if user.get("role") == "admin" else "#3498db"
-        tk.Label(self.info_frame, text=role_text, font=("Helvetica", 12), bg="white", fg=role_color).grid(row=row, column=1, sticky=tk.W, pady=8)
-
-    def _show_borrow_stats(self):
-        """显示借阅统计"""
-        user = self.controller.current_user
-        if not user:
-            tk.Label(self.stats_frame, text="未登录", font=("Helvetica", 12), bg="white").pack()
-            return
-        
-        borrows = get_user_borrows(user["user_id"])
-        total = len(borrows)
-        borrowed = len([b for b in borrows if b["status"] == "borrowed"])
-        returned = len([b for b in borrows if b["status"] == "returned"])
-        
-        # 使用Frame来布局统计数据
-        stats_grid = tk.Frame(self.stats_frame, bg="white")
-        stats_grid.pack()
-        
-        # 总借阅数
-        total_frame = tk.LabelFrame(stats_grid, text="总借阅", bg="#ecf0f1", padx=20, pady=15)
-        total_frame.grid(row=0, column=0, padx=20)
-        tk.Label(total_frame, text=str(total), font=("Helvetica", 24, "bold"), bg="#ecf0f1", fg="#2c3e50").pack()
-        
-        # 未归还数
-        borrowed_frame = tk.LabelFrame(stats_grid, text="未归还", bg="#ffeaa7", padx=20, pady=15)
-        borrowed_frame.grid(row=0, column=1, padx=20)
-        tk.Label(borrowed_frame, text=str(borrowed), font=("Helvetica", 24, "bold"), bg="#ffeaa7", fg="#d63031").pack()
-        
-        # 已归还数
-        returned_frame = tk.LabelFrame(stats_grid, text="已归还", bg="#dfe6e9", padx=20, pady=15)
-        returned_frame.grid(row=0, column=2, padx=20)
-        tk.Label(returned_frame, text=str(returned), font=("Helvetica", 24, "bold"), bg="#dfe6e9", fg="#00b894").pack()
+        if user:
+            self.user_id_var.set(user.get("user_id", ""))
+            self.username_var.set(user.get("username", ""))
+            role_text = "管理员" if user.get("role") == "admin" else "普通用户"
+            self.role_var.set(role_text)
+            self.label_role.config(fg="#e74c3c" if user.get("role") == "admin" else "#3498db")
+        else:
+            self.user_id_var.set("")
+            self.username_var.set("")
+            self.role_var.set("")
 
     def _update_stats(self):
-        """更新统计信息"""
-        for widget in self.stats_frame.winfo_children():
-            widget.destroy()
-        self._show_borrow_stats()
+        user = self.controller.current_user
+        if user:
+            borrows = get_user_borrows(user["user_id"])
+            total = len(borrows)
+            borrowed = len([b for b in borrows if b["status"] == "borrowed"])
+            returned = len([b for b in borrows if b["status"] == "returned"])
+            self.stats_total_var.set(str(total))
+            self.stats_borrowed_var.set(str(borrowed))
+            self.stats_returned_var.set(str(returned))
+        else:
+            self.stats_total_var.set("0")
+            self.stats_borrowed_var.set("0")
+            self.stats_returned_var.set("0")
 
     def _refresh_borrow_list(self):
-        """刷新借阅记录列表"""
         for item in self.tree.get_children():
             self.tree.delete(item)
         
@@ -164,20 +170,16 @@ class UserPage(tk.Frame):
         
         for borrow in borrows:
             book_info = book_map.get(borrow.get("book_id", ""), {})
-            status_text = borrow.get("status", "")
-            status_color = "#e74c3c" if status_text == "borrowed" else "#27ae60"
-            
             self.tree.insert("", tk.END, values=(
                 borrow.get("borrow_id", ""),
                 book_info.get("title", ""),
                 book_info.get("author", ""),
                 borrow.get("borrow_date", ""),
                 borrow.get("return_date", "未归还"),
-                status_text
+                borrow.get("status", "")
             ))
 
     def _change_pwd(self):
-        """修改密码"""
         user = self.controller.current_user
         if not user:
             messagebox.showwarning("提示", "请先登录！")

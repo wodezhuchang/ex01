@@ -42,26 +42,36 @@ def user_register(username, password, role='user'):
     # 1. 检查用户名是否重复
     if user_exists(username):
         return False
-    
+
     # 2. 校验角色
     if role not in ['admin', 'user']:
         role = 'user'
-    
-    # 3. 生成 user_id
-    users = get_all_users()
-    max_id = max([int(u['user_id']) for u in users], default=0)
-    new_id = max_id + 1
-    
+
+    # 3. 生成 user_id（新增异常捕获）
+    try:
+        users = get_all_users()
+        max_id = max([int(u['user_id']) for u in users if u['user_id'].strip().isdigit()], default=0)
+        new_id = max_id + 1
+    except Exception as e:
+        print(f"生成user_id失败: {e}")
+        return False
+
     # 4. 写入新用户
     new_user = {
         "user_id": str(new_id),
         "username": username,
-        "password": password,  # 可改为 hashlib.sha256(password).hexdigest() 加密存储
+        "password": password,
         "role": role
     }
+    # 临时：手动校验append_csv写入前的字段
+    print(f"准备写入新用户: {new_user}")  # 打印日志，验证字段
     append_csv(USERS_FILE, new_user)
-    
-    return True
+
+    # 新增：校验是否写入成功
+    if user_exists(username):
+        return True
+    else:
+        return False
 
 
 # ============================================
@@ -75,8 +85,12 @@ def user_login(username, password):
           登录失败返回 None
     """
     users = get_all_users()
-    
+    # 临时：打印所有用户数据，定位字段问题
+    print(f"当前用户列表: {users}")
+
     for user in users:
+        # 临时：打印比对过程
+        print(f"比对用户: {user['username']}, 输入密码: {password}, 存储密码: {user['password']}")
         if user['username'] == username and user['password'] == password:
             # 返回用户信息（不返回密码）
             return {
@@ -84,7 +98,7 @@ def user_login(username, password):
                 "username": user['username'],
                 "role": user['role']
             }
-    
+
     return None
 
 

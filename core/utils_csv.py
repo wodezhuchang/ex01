@@ -34,6 +34,7 @@ def write_csv(file_path, data):
     except Exception as e:
         pass  # 可加日志
 
+
 def append_csv(file_path, row):
     """
     追加一行到CSV文件，row为dict，自动适配表头。
@@ -41,12 +42,25 @@ def append_csv(file_path, row):
     """
     file_exists = os.path.exists(file_path)
     write_header = not file_exists or os.path.getsize(file_path) == 0
+
+    # 新增：读取现有表头（如果文件存在）
+    existing_fieldnames = []
+    if file_exists and os.path.getsize(file_path) > 0:
+        with open(file_path, mode='r', newline='', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            existing_fieldnames = reader.fieldnames or []
+
     try:
         with open(file_path, mode='a', newline='', encoding='utf-8') as f:
-            writer = csv.DictWriter(f, fieldnames=row.keys())
+            # 优先使用现有表头，无则用row.keys()
+            fieldnames = existing_fieldnames if existing_fieldnames else row.keys()
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
             if write_header:
                 writer.writeheader()
-            writer.writerow(row)
+            # 确保row的字段与fieldnames匹配，缺失字段补空
+            row_data = {k: row.get(k, '') for k in fieldnames}
+            writer.writerow(row_data)
     except Exception as e:
-        pass  # 可加日志
+        print(f"追加CSV失败: {e}")  # 临时打印日志
+        pass
 

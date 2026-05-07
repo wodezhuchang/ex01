@@ -15,7 +15,8 @@ def init_csv_files():
 
     # 3. 目标路径：父目录 / ui 文件夹
     data_dir = os.path.join(parent_dir, "ui","data")
-    
+
+
     if not os.path.exists(data_dir):
         os.makedirs(data_dir)
 
@@ -31,3 +32,5 @@ def init_csv_files():
             with open(file_path, mode='w', newline='', encoding='utf-8') as f:
                 writer = csv.writer(f)
                 writer.writerow(headers)
+    print("successfully init csv files")
+

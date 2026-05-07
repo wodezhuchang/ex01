@@ -1,5 +1,1 @@
-from ui.main_window import MainWindow
-
-main = MainWindow()
-main.run()
-
+#当前为空，后续存放ui相关代码   

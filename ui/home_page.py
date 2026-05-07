@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
+
 class HomePage(tk.Frame):
     def __init__(self, parent, controller):
         super().__init__(parent, bg="#f0f0f0")
@@ -101,3 +102,5 @@ class HomePage(tk.Frame):
         """退出登录"""
         self.controller.current_user = None
         self.controller.show_page("login")
+
+

@@ -1,11 +1,3 @@
-import os
-import sys
-
-# 【关键】添加项目根目录到 Python 路径
-project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if project_root not in sys.path:
-    sys.path.insert(0, project_root)
-
 import tkinter as tk
 from tkinter import ttk
 
@@ -45,12 +37,13 @@ class MainWindow:
     def _init_pages(self):
         """初始化所有页面"""
         # 先导入各页面（后面会创建）
-        from ui.login_page import LoginPage
+        from ui.login_page_old import LoginPage
         from ui.home_page import HomePage
-        from ui.book_page import BookPage
+        from ui.admin_book_page import BookPage
         from ui.borrow_page import BorrowPage
         from ui.user_page import UserPage
-        
+        from ui.user_book_page import BookPage1
+
         # 创建页面实例
         self.pages["login"] = LoginPage(self.container, self)
         self.pages["home"] = HomePage(self.container, self)
@@ -76,3 +69,5 @@ class MainWindow:
     def run(self):
         """启动主循环"""
         self.root.mainloop()
+
+

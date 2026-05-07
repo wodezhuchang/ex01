@@ -14,3 +14,4 @@ borrow_id,user_id,book_id,borrow_date,return_date,status
 13,2,4,2026-05-07,2026-05-07,returned
 14,2,14,2026-05-07,2026-05-07,returned
 15,2,54,2026-05-07,,borrowed
+16,1,97,2026-05-07,,borrowed

@@ -36,7 +36,6 @@ class MainWindow:
     
     def _init_pages(self):
         """初始化所有页面"""
-        # 先导入各页面（后面会创建）
         from ui.login_page_old import LoginPage
         from ui.home_page import HomePage
         from ui.admin_book_page import BookPage
@@ -61,6 +60,9 @@ class MainWindow:
             page.pack_forget()
         # 显示目标页面
         self.pages[page_name].pack(fill="both", expand=True)
+        # 如果页面有refresh方法，调用它刷新数据
+        if hasattr(self.pages[page_name], 'refresh'):
+            self.pages[page_name].refresh()
         # 如果进入首页，更新欢迎信息
         if page_name == "home":
             self.pages["home"].update_welcome()
@@ -69,5 +71,3 @@ class MainWindow:
     def run(self):
         """启动主循环"""
         self.root.mainloop()
-
-

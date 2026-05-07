@@ -41,17 +41,8 @@ class BorrowPage(tk.Frame):
             command=self._return_book
         )
         self.btn_return.pack(side=tk.LEFT, padx=5)
-        
-        # 查看权限（管理员看全部，普通用户看个人）
-        self.btn_view = tk.Button(
-            self.func_frame,
-            text="查看全部借阅" if self._is_admin() else "查看我的借阅",
-            font=("Helvetica", 12),
-            command=self._refresh_borrow_list
-        )
-        self.btn_view.pack(side=tk.LEFT, padx=5)
 
-        # ========== 图书列表区（新增）==========
+        # ========== 图书列表区 ==========
         self.book_frame = tk.LabelFrame(self, text="可借阅图书", bg="#f0f0f0", font=("Helvetica", 12, "bold"))
         self.book_frame.pack(fill="both", expand=True, padx=20, pady=5)
         
@@ -81,19 +72,16 @@ class BorrowPage(tk.Frame):
             show="headings",
             height=8
         )
-        # 设置列标题
         self.book_tree.heading("book_id", text="图书ID")
         self.book_tree.heading("title", text="书名")
         self.book_tree.heading("author", text="作者")
         self.book_tree.heading("isbn", text="ISBN")
         self.book_tree.heading("count", text="库存")
-        # 设置列宽
         self.book_tree.column("book_id", width=80)
         self.book_tree.column("title", width=200)
         self.book_tree.column("author", width=150)
         self.book_tree.column("isbn", width=180)
         self.book_tree.column("count", width=80)
-        
         self.book_tree.pack(fill="both", expand=True, padx=10, pady=5)
         
         # ========== 借阅列表区 ==========
@@ -106,7 +94,6 @@ class BorrowPage(tk.Frame):
             show="headings",
             height=10
         )
-        # 设置列标题
         self.tree.heading("borrow_id", text="借阅ID")
         self.tree.heading("user_id", text="用户ID")
         self.tree.heading("book_id", text="图书ID")
@@ -115,7 +102,6 @@ class BorrowPage(tk.Frame):
         self.tree.heading("borrow_date", text="借阅日期")
         self.tree.heading("return_date", text="归还日期")
         self.tree.heading("status", text="状态")
-        # 设置列宽
         self.tree.column("borrow_id", width=80)
         self.tree.column("user_id", width=80)
         self.tree.column("book_id", width=80)
@@ -124,10 +110,10 @@ class BorrowPage(tk.Frame):
         self.tree.column("borrow_date", width=120)
         self.tree.column("return_date", width=120)
         self.tree.column("status", width=80)
-        
         self.tree.pack(fill="both", expand=True, padx=10, pady=5)
-        
-        # 初始化列表
+
+    def refresh(self):
+        """页面显示时刷新数据"""
         self._refresh_book_list()
         self._refresh_borrow_list()
 

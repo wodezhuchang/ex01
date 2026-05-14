@@ -1,5 +1,5 @@
 from core.utils_csv import read_csv, write_csv, append_csv
-from core.config import BOOKS_FILE
+from core.config import BOOKS_FILE, BORROWS_FILE
 from core.logger import log_info, log_error
 
 def get_all_books():
@@ -28,6 +28,13 @@ def add_book(book_info):
 
 def delete_book(book_id):
     try:
+        # 检查是否有未归还的借阅记录
+        borrows = read_csv(BORROWS_FILE)
+        for borrow in borrows:
+            if borrow['book_id'] == str(book_id) and borrow['status'] == 'borrowed':
+                log_error(f"删除图书失败：图书ID {book_id} 存在未归还的借阅记录")
+                return False
+        
         books = get_all_books()
         book_title = ""
         for book in books:

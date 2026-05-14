@@ -215,7 +215,7 @@ class BookPage(tk.Frame):
                 messagebox.showinfo("成功", "图书删除成功！")
                 self._refresh_book_list()
             else:
-                messagebox.showerror("错误", "删除失败（图书不存在）！")
+                messagebox.showerror("错误", "删除失败（图书不存在或存在未归还的借阅记录）！")
 
     def _batch_import_books(self):
         """批量导入图书（CSV文件）- 支持库存累加"""

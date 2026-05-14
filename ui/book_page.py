@@ -88,8 +88,9 @@ class BookPage(tk.Frame):
     
     def _delete_book(self, book_id):
         if messagebox.askyesno("确认", f"是否删除图书ID：{book_id}？"):
-            if delete_book(book_id):
+            result = delete_book(book_id)
+            if result:
                 messagebox.showinfo("成功", "图书删除成功！")
                 self.book_list.refresh()
             else:
-                messagebox.showerror("错误", "删除失败（图书不存在）！")
+                messagebox.showerror("错误", "删除失败（图书不存在或存在未归还的借阅记录）！")

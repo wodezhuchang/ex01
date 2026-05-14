@@ -108,12 +108,16 @@ class BookListComponent(tk.Frame):
             ))
     
     def _handle_delete(self):
+        print(f"[DEBUG] _handle_delete 被调用")
         selected = self.tree.selection()
+        print(f"[DEBUG] selected={selected}, self.on_delete_callback={self.on_delete_callback}")
         if selected and self.on_delete_callback:
             item = self.tree.item(selected[0])
             book_id = item["values"][0]
+            print(f"[DEBUG] 调用 on_delete_callback，book_id={book_id}")
             self.on_delete_callback(book_id)
-            self._refresh_list()
+        else:
+            print(f"[DEBUG] 没有选中项或没有回调函数")
     
     def get_selected_book(self):
         selected = self.tree.selection()

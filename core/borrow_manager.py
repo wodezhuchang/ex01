@@ -136,3 +136,15 @@ def get_all_borrows():
     except Exception as e:
         log_error(f"获取所有借阅记录异常：{str(e)}")
         return []
+
+def has_unreturned_borrows(book_id):
+    """检查指定图书是否有未归还的借阅记录"""
+    try:
+        borrows = read_csv(BORROWS_FILE)
+        for borrow in borrows:
+            if borrow['book_id'] == str(book_id) and borrow['status'] == 'borrowed':
+                return True
+        return False
+    except Exception as e:
+        log_error(f"检查图书借阅状态异常：{str(e)}")
+        return False

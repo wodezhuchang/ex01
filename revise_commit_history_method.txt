@@ -1,0 +1,92 @@
+
+
+PS C:\Users\yangd\Documents\GitHub\ex01> git switch main
+fatal: cannot switch branch while rebasing
+Consider "git rebase --quit" or "git worktree add".
+PS C:\Users\yangd\Documents\GitHub\ex01> git rebase --quit
+PS C:\Users\yangd\Documents\GitHub\ex01> git switch main
+Already on 'main'
+Your branch is up to date with 'origin/main'.
+PS C:\Users\yangd\Documents\GitHub\ex01> git rebase -i 5f50afaccc2a50533e2fa37f3d873f560646ad51^
+[detached HEAD 13de2f5] feat: 添加日志记录功能并优化用户和图书管理 模块
+ Date: Thu May 7 17:11:22 2026 +0800
+ 38 files changed, 676 insertions(+), 556 deletions(-)
+ create mode 100644 core/__pycache__/__init__.cpython-313.pyc
+ create mode 100644 core/__pycache__/__init__.cpython-38.pyc
+ create mode 100644 core/__pycache__/book_manager.cpython-313.pyc
+ create mode 100644 core/__pycache__/book_manager.cpython-38.pyc
+ create mode 100644 core/__pycache__/borrow_manager.cpython-313.pyc
+ create mode 100644 core/__pycache__/borrow_manager.cpython-38.pyc
+ create mode 100644 core/__pycache__/config.cpython-313.pyc
+ create mode 100644 core/__pycache__/config.cpython-38.pyc
+ create mode 100644 core/__pycache__/logger.cpython-313.pyc        
+ create mode 100644 core/__pycache__/logger.cpython-38.pyc
+ create mode 100644 core/__pycache__/user_manager.cpython-313.pyc  
+ create mode 100644 core/__pycache__/user_manager.cpython-38.pyc   
+ create mode 100644 core/__pycache__/utils_csv.cpython-313.pyc     
+ create mode 100644 core/__pycache__/utils_csv.cpython-38.pyc      
+ create mode 100644 core/config.py
+ create mode 100644 core/logger.py
+ create mode 100644 main.py
+ create mode 100644 ui/__pycache__/__init__.cpython-313.pyc        
+ create mode 100644 ui/__pycache__/admin_book_page.cpython-313.pyc 
+ create mode 100644 ui/__pycache__/borrow_page.cpython-313.pyc     
+ create mode 100644 ui/__pycache__/components.cpython-313.pyc      
+ create mode 100644 ui/__pycache__/home_page.cpython-313.pyc       
+ create mode 100644 ui/__pycache__/login_page_old.cpython-313.pyc  
+ create mode 100644 ui/__pycache__/main_window.cpython-313.pyc     
+ create mode 100644 ui/__pycache__/user_book_page.cpython-313.pyc  
+ create mode 100644 ui/__pycache__/user_page.cpython-313.pyc       
+ create mode 100644 ui/components.py
+ create mode 100644 ui/data/app.log
+Successfully rebased and updated refs/heads/main.
+PS C:\Users\yangd\Documents\GitHub\ex01> git push origin HEAD -f   
+Enumerating objects: 182, done.
+Counting objects: 100% (182/182), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (84/84), done.
+Writing objects: 100% (165/165), 122.44 KiB | 30.61 MiB/s, done.   
+Total 165 (delta 82), reused 149 (delta 78), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (82/82), completed with 5 local objects.
+To https://github.com/wodezhuchang/ex01.git
+ + d33aad4...a860fc9 HEAD -> main (forced update)
+PS C:\Users\yangd\Documents\GitHub\ex01> git rebase -i 808aa1eda4c6194a4cfe47e4244f56b3d81d7413^
+[detached HEAD 300092e] feat(用户页面): 重构用户页面并添加借阅记录 列表
+ Date: Thu May 7 17:27:34 2026 +0800
+ 10 files changed, 152 insertions(+), 56 deletions(-)
+Successfully rebased and updated refs/heads/main.
+PS C:\Users\yangd\Documents\GitHub\ex01> git push origin HEAD -f   
+Enumerating objects: 140, done.
+Counting objects: 100% (140/140), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (65/65), done.
+Writing objects: 100% (120/120), 91.34 KiB | 13.05 MiB/s, done.    
+Total 120 (delta 63), reused 95 (delta 53), pack-reused 0 (from 0) 
+remote: Resolving deltas: 100% (63/63), completed with 14 local objects.
+To https://github.com/wodezhuchang/ex01.git
+ + a860fc9...62731e9 HEAD -> main (forced update)
+PS C:\Users\yangd\Documents\GitHub\ex01> git rebase -i 300092e44d3799c40cfa3b81e1ae861b1440aa04^
+[detached HEAD fb3a183] feat(用户页面): 重构用户页面并添加借阅记录 列表 #12
+ Date: Thu May 7 17:27:34 2026 +0800
+ 10 files changed, 152 insertions(+), 56 deletions(-)
+Successfully rebased and updated refs/heads/main.
+PS C:\Users\yangd\Documents\GitHub\ex01> git push origin HEAD -f
+Enumerating objects: 140, done.
+Counting objects: 100% (140/140), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (65/65), done.
+Writing objects: 100% (120/120), 91.34 KiB | 15.22 MiB/s, done.    
+Total 120 (delta 63), reused 95 (delta 53), pack-reused 0 (from 0) 
+remote: Resolving deltas: 100% (63/63), completed with 14 local objects.
+To https://github.com/wodezhuchang/ex01.git
+ + 62731e9...2cc8945 HEAD -> main (forced update)
+PS C:\Users\yangd\Documents\GitHub\ex01> 
+
+git commit --amend
+i---edit   esc--stop_edit   :wq--save
+git push origin HEAD -f
+
+git switch main
+git rebase -I commit_id^
+i---edit   esc--stop_edit   :wq--save
+git push origin HEAD -f

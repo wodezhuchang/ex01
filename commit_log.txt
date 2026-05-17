@@ -1,0 +1,722 @@
+Microsoft Windows [版本 10.0.26200.8457]
+(c) Microsoft Corporation。保留所有权利。
+
+C:\Users\yangd>cd C:\Users\yangd\Documents\GitHub\ex01
+
+C:\Users\yangd\Documents\GitHub\ex01>git log
+commit b94a4933639d4266e2fe3b52fe1009d9b50ebff5 (HEAD -> main, origin/main, origin/HEAD)
+Author: wodezhuchang <yangdeyann@outlook.com>
+Date:   Sun May 17 19:30:42 2026 +0800
+
+    chore(.idea): add intellij idea project configuration files
+
+    add all necessary IDEA workspace configuration files for the project
+    #17
+
+commit af34e06e530c5422f9196041a18348fb95646a49
+Author: wodezhuchang <yangdeyann@outlook.com>
+Date:   Thu May 14 17:54:57 2026 +0800
+
+    feat: add borrow check logic for book deletion, add test scripts
+
+    1. 新增has_unreturned_borrows函数检查图书未归还借阅记录
+    2. 修改delete_book函数，删除图书前校验是否有未归还借阅
+    3. 更新管理员和用户端图书删除的错误提示信息
+    4. 新增测试脚本test_borrow_check.py和add_test_borrow.py
+    5. 调整图书库存和借阅记录数据
+    6. 为图书列表组件添加调试打印日志
+
+    主要是修复了一处逻辑漏洞：
+    意思是管理员登陆账号进行日常的图书管理操作，点击某图书执行删除清理馆藏图书的任务，首先要检查这个图书是否存在有人借出但是还没归还，还是borrow的状态，如果有就提示不能删除因为有人未还本书，而不是直接删除成功，相当于删除图书之前要有检查操作。
+
+    PS:应该修改book_manager里面的delete_book函数，而不是在book_page里面写_delete_book函数
+
+:...skipping...
+commit b94a4933639d4266e2fe3b52fe1009d9b50ebff5 (HEAD -> main, origin/main, origin/HEAD)
+Author: wodezhuchang <yangdeyann@outlook.com>
+Date:   Sun May 17 19:30:42 2026 +0800
+
+    chore(.idea): add intellij idea project configuration files
+
+    add all necessary IDEA workspace configuration files for the project
+    #17
+
+commit af34e06e530c5422f9196041a18348fb95646a49
+Author: wodezhuchang <yangdeyann@outlook.com>
+Date:   Thu May 14 17:54:57 2026 +0800
+
+    feat: add borrow check logic for book deletion, add test scripts
+
+    1. 新增has_unreturned_borrows函数检查图书未归还借阅记录
+    2. 修改delete_book函数，删除图书前校验是否有未归还借阅
+    3. 更新管理员和用户端图书删除的错误提示信息
+    4. 新增测试脚本test_borrow_check.py和add_test_borrow.py
+    5. 调整图书库存和借阅记录数据
+    6. 为图书列表组件添加调试打印日志
+
+    主要是修复了一处逻辑漏洞：
+    意思是管理员登陆账号进行日常的图书管理操作，点击某图书执行删除清理馆藏图书的任务，首先要检查这个图书是否存在有人借出但是还没归还，还是borrow的状态，如果有就提示不能删除因为有人未还本书，而不是直接删除成功，相当于删除图书之前要有检查操作。
+
+    PS:应该修改book_manager里面的delete_book函数，而不是在book_page里面写_delete_book函数
+
+commit 14fa6c31d5ecb32bf0d4f39cdd3689ff3ed30cd2
+Author: wodezhuchang <yangdeyann@outlook.com>
+Date:   Thu May 14 16:37:13 2026 +0800
+
+    chore: 更新测试数据与gitignore配置
+
+    1. 新增.idea目录忽略规则，避免IDE配置文件提交
+    2. 添加测试用户小敏与对应借阅记录
+    3. 更新日志文件，记录近期操作记录
+
+commit fba5d9456f6e5f99a3fccce433dbdf3a3a6a73c4
+Author: wodezhuchang <yangdeyann@outlook.com>
+Date:   Thu May 7 20:07:21 2026 +0800
+
+    附：调试过程会变动的三个数据文件
+    app.log
+    books.csv
+    borrow.csv
+
+commit 5bd655b9df993cb1de35784b09ec2035c8575d79
+Author: wodezhuchang <yangdeyann@outlook.com>
+Date:   Thu May 7 20:02:42 2026 +0800
+
+    feat(图书管理): 新增图书借阅功能并更新相关数据
+
+    - 在borrows.csv中添加新的借阅记录
+    - 更新books.csv中图书的库存数量
+    - 在app.log中记录借阅操作
+    - 更新用户界面组件以支持借阅功能
+    - 添加相关缓存文件
+
+    实现用户借阅图书的核心功能，包括数据更新和操作日志记录
+
+commit f96ab4160674ab1389bf9eb2cce1b4b8732e3488
+Author: wodezhuchang <yangdeyann@outlook.com>
+Date:   Thu May 7 19:08:40 2026 +0800
+
+    chore: 更新借阅记录和日志文件
+
+    添加新的借阅记录14并更新应用日志，记录用户借阅和归还操作
+
+commit e962a15ae9f00922a8a42c4a030600665d178dda
+Author: wodezhuchang <yangdeyann@outlook.com>
+Date:   Thu May 7 19:00:09 2026 +0800
+
+    data中无用文件a.txt删除
+
+    无效文件删除。
+
+commit a2d81631beafa3efa70271a5ca9c4450a2b81557
+Author: wodezhuchang <yangdeyann@outlook.com>
+Date:   Thu May 7 18:53:13 2026 +0800
+
+    docs: 添加 Tkinter 语法指南文档
+
+    添加详细的 Tkinter 语法指南文档，包含消息弹窗、自定义输入弹窗、常用组件、布局管理器和数据绑定等常用功能的使用示例和项目实践代码
+
+commit d8732739c04c9d5e669c2da6734ea611315a601b
+Author: wodezhuchang <yangdeyann@outlook.com>
+Date:   Thu May 7 17:52:37 2026 +0800
+
+    refactor(ui): 重构用户页面布局并优化密码修改功能
+
+    - 将用户信息、密码修改和借阅统计区域重新布局，使用更紧凑的样式
+    - 密码修改区域改为单行布局，提高空间利用率
+    - 使用StringVar管理用户信息显示，提升代码可维护性
+    - 优化统计数据显示方式，使用更小的字体和间距
+    - 简化借阅记录列表的刷新逻辑
+
+commit 136c1776147ed9936aef25fc475292d771511578
+Author: wodezhuchang <yangdeyann@outlook.com>
+Date:   Thu May 7 17:27:34 2026 +0800
+
+    feat(用户页面): 重构用户页面并添加借阅记录列表
+
+    重构用户页面布局，添加借阅记录表格显示，优化统计信息展示方式
+    添加密码确认字段和密码长度验证
+    实现页面刷新功能以保持数据同步
+
+    附：用户的个人中心部分存在问题
+
+commit 5f50afaccc2a50533e2fa37f3d873f560646ad51
+Author: wodezhuchang <yangdeyann@outlook.com>
+Date:   Thu May 7 17:11:22 2026 +0800
+
+    feat: 添加日志记录功能并优化用户和图书管理模块
+
+    refactor(book_manager): 重构图书管理模块，添加日志记录和错误处理
+    refactor(user_manager): 重构用户管理模块，添加日志记录和错误处理
+    feat(logger): 新增日志记录工具模块
+    style: 清理冗余代码并优化格式
+    docs: 更新部分注释和文档
+
+commit c02455d2ecf4bb41dfbd3dcdc67c56f425df29fc
+Author: wodezhuchang <yangdeyann@outlook.com>
+Date:   Thu May 7 16:43:50 2026 +0800
+
+    删除重复或错误路径文件
+
+    共三个
+
+commit 91eef2102f70f8aadd7d5fca6ed47ff90b23464b
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Thu May 7 16:39:28 2026 +0800
+
+    Add files via upload
+
+commit 0bfa5233fc67b68d60c03c85cbb63b7083162f0c
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Thu May 7 16:38:09 2026 +0800
+
+    Create a.txt
+
+commit ebdef8a87691a431a8cbb92acb8eb139e6392cbd
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Thu May 7 16:36:23 2026 +0800
+
+    Add files via upload
+
+commit 624b4c0011d4863214eff3f2e637f7e146f2763a
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Thu May 7 16:35:19 2026 +0800
+
+    版本更新
+
+    1.0
+
+commit 7f72dd1f0b585d490b78ea936eb4c4f82635590a
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Thu May 7 16:34:12 2026 +0800
+
+    修改同步
+
+    版本更新
+
+commit 42b613eaf7c2e2caa6d39e0772983349231d2ae8 (origin/yangdeyan)
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Sun Apr 19 15:18:44 2026 +0800
+
+    Add files via upload
+
+commit e11179eeb678c189a3730b79654beff15e2cd1d6
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Sun Apr 19 15:17:47 2026 +0800
+
+    Add files via upload
+
+commit d3564f2d487d64069dddb8482442a2881c24e831
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Sun Apr 19 14:36:44 2026 +0800
+
+    Change CSV initialization directory to ui/data
+
+    Updated the init_csv_files function to create the data directory in the parent folder of core, specifically under ui/data.
+
+commit fdbf449dbf13c41216b589cb22f978379f790ad2
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Thu Apr 16 16:22:41 2026 +0800
+
+    Add functional structure diagram for library system
+
+commit f0263172432890ad76dd09a1e5fb9315b9c43570
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Wed Apr 15 20:10:14 2026 +0800
+
+    Update login_page.py
+
+commit be7b340c2b41fa8403d10e91d6379621d3f5d0dc
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Wed Apr 15 18:47:45 2026 +0800
+
+    Update login_page.py
+
+commit 816b9199d1acfa2cb75d8131920b1f83c9adcd1a
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Wed Apr 15 18:47:21 2026 +0800
+
+    Update main_window.py
+
+commit 61a3bf696a6fa278655de3394d641891dda5d431
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Wed Apr 15 18:44:25 2026 +0800
+
+    Update test.py
+
+commit a4e443adaa04b2110ee77e6610b9d7c4e708cd5f
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Wed Apr 15 18:37:56 2026 +0800
+
+    Create test.py
+
+    ## 问题总结
+
+    在调试过程中发现了以下 **Bug**：
+
+    ### 1. 模块导入名称不一致
+    | 文件 | 错误导入 | 正确导入 |
+    |------|---------|---------|
+    | `book_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `borrow_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `import_export.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `user_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+
+    ### 2. CSV 文件编码问题（BOM）
+    Windows 下 CSV 文件可能有 UTF-8 BOM，导致 `DictReader` 解析错位。
+
+    **修复**：所有文件操作使用 `encoding='utf-8-sig'` 替代 `'utf-8'`
+
+    ### 3. `append_csv` 字段顺序错误
+    原代码按字典 keys 顺序写入，但与 CSV 表头顺序不一致，导致数据错位。
+
+    **修复**：先读取现有文件的表头，按照表头顺序提取并写入数据。
+
+    ---
+
+    **测试文件 `test.py`** 已完成，可用于验证系统功能。
+
+commit ecd1e59be739de329288b338727113ac296e5d9c
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Wed Apr 15 18:37:24 2026 +0800
+
+    Create debug_log.md
+
+    ## 问题总结
+
+    在调试过程中发现了以下 **Bug**：
+
+    ### 1. 模块导入名称不一致
+    | 文件 | 错误导入 | 正确导入 |
+    |------|---------|---------|
+    | `book_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `borrow_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `import_export.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `user_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+
+    ### 2. CSV 文件编码问题（BOM）
+    Windows 下 CSV 文件可能有 UTF-8 BOM，导致 `DictReader` 解析错位。
+
+    **修复**：所有文件操作使用 `encoding='utf-8-sig'` 替代 `'utf-8'`
+
+    ### 3. `append_csv` 字段顺序错误
+    原代码按字典 keys 顺序写入，但与 CSV 表头顺序不一致，导致数据错位。
+
+    **修复**：先读取现有文件的表头，按照表头顺序提取并写入数据。
+
+    ---
+
+    **测试文件 `test.py`** 已完成，可用于验证系统功能。
+
+commit 050cc8a5aabd75d7f2c1d79fa996b302024efbb3
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Wed Apr 15 18:36:35 2026 +0800
+
+    Update import_export.py
+
+    ## 问题总结
+
+    在调试过程中发现了以下 **Bug**：
+
+    ### 1. 模块导入名称不一致
+    | 文件 | 错误导入 | 正确导入 |
+    |------|---------|---------|
+    | `book_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `borrow_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `import_export.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `user_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+
+    ### 2. CSV 文件编码问题（BOM）
+    Windows 下 CSV 文件可能有 UTF-8 BOM，导致 `DictReader` 解析错位。
+
+    **修复**：所有文件操作使用 `encoding='utf-8-sig'` 替代 `'utf-8'`
+
+    ### 3. `append_csv` 字段顺序错误
+    原代码按字典 keys 顺序写入，但与 CSV 表头顺序不一致，导致数据错位。
+
+    **修复**：先读取现有文件的表头，按照表头顺序提取并写入数据。
+
+    ---
+
+    **测试文件 `test.py`** 已完成，可用于验证系统功能。
+
+commit d39f327ec70a2572b0412e44b31228570ba3377c
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Wed Apr 15 18:36:06 2026 +0800
+
+    Update user_manager.py
+
+    ## 问题总结
+
+    在调试过程中发现了以下 **Bug**：
+
+    ### 1. 模块导入名称不一致
+    | 文件 | 错误导入 | 正确导入 |
+    |------|---------|---------|
+    | `book_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `borrow_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `import_export.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `user_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+
+    ### 2. CSV 文件编码问题（BOM）
+    Windows 下 CSV 文件可能有 UTF-8 BOM，导致 `DictReader` 解析错位。
+
+    **修复**：所有文件操作使用 `encoding='utf-8-sig'` 替代 `'utf-8'`
+
+    ### 3. `append_csv` 字段顺序错误
+    原代码按字典 keys 顺序写入，但与 CSV 表头顺序不一致，导致数据错位。
+
+    **修复**：先读取现有文件的表头，按照表头顺序提取并写入数据。
+
+    ---
+
+    **测试文件 `test.py`** 已完成，可用于验证系统功能。
+
+commit 1d3ea3befee7580c2174dd016ccda0b50cf9d037
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Wed Apr 15 18:35:36 2026 +0800
+
+    Update book_manager.py
+
+    ## 问题总结
+
+    在调试过程中发现了以下 **Bug**：
+
+    ### 1. 模块导入名称不一致
+    | 文件 | 错误导入 | 正确导入 |
+    |------|---------|---------|
+    | `book_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `borrow_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `import_export.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `user_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+
+    ### 2. CSV 文件编码问题（BOM）
+    Windows 下 CSV 文件可能有 UTF-8 BOM，导致 `DictReader` 解析错位。
+
+    **修复**：所有文件操作使用 `encoding='utf-8-sig'` 替代 `'utf-8'`
+
+    ### 3. `append_csv` 字段顺序错误
+    原代码按字典 keys 顺序写入，但与 CSV 表头顺序不一致，导致数据错位。
+
+    **修复**：先读取现有文件的表头，按照表头顺序提取并写入数据。
+
+    ---
+
+    **测试文件 `test.py`** 已完成，可用于验证系统功能。
+
+commit 95a24e100b430bbe9bb8957840975a20e7a96489
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Wed Apr 15 18:34:49 2026 +0800
+
+    Update borrow_manager.py
+
+    ## 问题总结
+
+    在调试过程中发现了以下 **Bug**：
+
+    ### 1. 模块导入名称不一致
+    | 文件 | 错误导入 | 正确导入 |
+    |------|---------|---------|
+    | `book_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `borrow_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `import_export.py` | `from core.csv_utils` | `from core.utils_csv` |
+    | `user_manager.py` | `from core.csv_utils` | `from core.utils_csv` |
+
+    ### 2. CSV 文件编码问题（BOM）
+    Windows 下 CSV 文件可能有 UTF-8 BOM，导致 `DictReader` 解析错位。
+
+    **修复**：所有文件操作使用 `encoding='utf-8-sig'` 替代 `'utf-8'`
+
+    ### 3. `append_csv` 字段顺序错误
+    原代码按字典 keys 顺序写入，但与 CSV 表头顺序不一致，导致数据错位。
+
+    **修复**：先读取现有文件的表头，按照表头顺序提取并写入数据。
+
+    ---
+
+    **测试文件 `test.py`** 已完成，可用于验证系统功能。
+
+commit 101f5a5aeaf8841f87c8d0d564054bfa7a103358
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 21:11:23 2026 +0800
+
+    Update README.md
+
+commit 64a2e93f1079114fe49c1322d9f7c8fdff7e7c4d
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 21:10:23 2026 +0800
+
+    Add files via upload
+
+    【前端模块】登录UI及其逻辑
+
+commit 0e9cf62f17c307cc32f3e777e1e9ae7cf75275be
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 21:08:14 2026 +0800
+
+    Add files via upload
+
+    【前端模块】系统首页 / 菜单页
+
+commit 832a13883d1a1d9d3574c17b3aa9d49c7c04e4ce
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 21:07:45 2026 +0800
+
+    Update main_window.py
+
+commit 3f178e862f1407a60d631aec0245ccf705847b5b
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 21:00:36 2026 +0800
+
+    Add files via upload
+
+    【前端模块】主窗口与页面框架
+
+commit 98ce003202a212b3bc1179c348c8444b3a94b30c
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 21:00:21 2026 +0800
+
+    Create __init__.py
+
+commit 870d696611adef2c5b98805142ce462db0d71848
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:54:56 2026 +0800
+
+    Add files via upload
+
+    【后端模块】用户账户相关逻辑
+
+commit d35d6017c414d3d6bc7c0d1f838bf022668021bd
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:50:07 2026 +0800
+
+    Update README.md
+
+commit edc4fd170542a55b667d5a61c5ea05b37487ee44
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:48:16 2026 +0800
+
+    Add files via upload
+
+    【后端模块】借阅归还逻辑
+
+commit 86594915bbd66d298007206de81d546ee402f9a7
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:45:25 2026 +0800
+
+    Create __init__.py
+
+commit b244ae71c1937f8896cd0e139b917d0094561ff3
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:44:57 2026 +0800
+
+    Update README.md
+
+commit dbb1ae3bc16f29c9eefea6c38a5a70abce0f8a7d
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:44:02 2026 +0800
+
+    Update README.md
+
+commit 6199f5c6a5b934e9d236ab289dbda2c41858bdcd
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:43:45 2026 +0800
+
+    Update README.md
+
+commit 2d40868fd24a76c8cc2730adb05044037dd2437e
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:43:04 2026 +0800
+
+    Update README.md
+
+commit 01d1592c99045fa14e7762b67698e94cdbf837ee
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:42:21 2026 +0800
+
+    Update README.md
+
+commit b44fd1a575d3614cd216107cf4a5c87e65c5ec74
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:42:03 2026 +0800
+
+    Update README.md
+
+commit eedb9d610d3a45091bb68cf593f4ad0090ad07e4
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:41:08 2026 +0800
+
+    Add files via upload
+
+    【后端模块】图书批量导入功能
+
+commit 19868043e03c2c741880ef19b049054724b05ee2
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:36:23 2026 +0800
+
+    Update our-personal-information.md
+
+commit bad4722f8f4721218eb194d92e6e36233c21c008
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:35:21 2026 +0800
+
+    Update our-personal-information.md
+
+commit ae25daa7c510d3aba20448b14a31853d8677854d
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:33:06 2026 +0800
+
+    Update our-personal-information.md
+
+commit 951c6d5d82e845550aca2d54eba3abf4dd2848ba
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:25:42 2026 +0800
+
+    Add files via upload
+
+    【后端模块】图书信息管理逻辑
+
+commit 501e2e7dae70f54766dff4ee528e6835434890ce
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:24:11 2026 +0800
+
+    Rename utils_csv.py to core/utils_csv.py
+
+commit 52f83270feab2b65992ec32f398d6347a2709ba0
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:23:33 2026 +0800
+
+    Rename init_csv.py to core/init_csv.py
+
+commit cd867aa314101cb4b7aaaf0cfd424bb7c3e0612a
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:21:48 2026 +0800
+
+    Create core_README.md
+
+commit 0612cee91e3845ebebe1e303828a51d67da5889c
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:19:19 2026 +0800
+
+    Update README.md
+
+commit 340d04003f55c2f84ecf7531d1cbbbf3545187b7
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:18:14 2026 +0800
+
+    Update README.md
+
+    预期文件目录
+
+commit 2f8d1ec909b3986e586d24d1a8ca76138a01713f
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:13:46 2026 +0800
+
+    Update README.md
+
+    所有路径建议用 os.path.join("data", "xxx.csv")
+
+commit 6f9776628aa149e48479fe05586343ad085e62f9
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:10:02 2026 +0800
+
+    Add files via upload
+
+    【后端模块】 CSV 通用读写工具函数
+
+commit c2c0b8edcd672a74c07a4ca21c021896b3341101
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Mon Apr 13 20:07:58 2026 +0800
+
+    Add files via upload
+
+    【后端模块】 CSV 数据文件初始化
+
+commit 5364b7c569c209af9e2226ff428f2c2133891856
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Thu Apr 9 17:55:45 2026 +0800
+
+    Revise README with project structure and tasks
+
+    Added detailed project structure and core functionalities for backend and frontend modules.
+
+commit 3427df0af577861e64e070c87d716628bdbe6830
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Thu Mar 19 22:24:59 2026 +0800
+
+    Rename our_information.md to our-personal-information.md
+
+commit fa10332ba311fecd12c764916658cca37a394a0b
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Thu Mar 19 17:40:05 2026 +0800
+
+    Update personal information section in markdown
+
+commit 7c89d8d9987a63a497b595d90ca69ed143f50738
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Thu Mar 19 17:37:41 2026 +0800
+
+    Update our_information.md
+
+commit aa52289fba0aa695d5cadf26650ca4a8c183c28d
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Thu Mar 19 17:37:00 2026 +0800
+
+    Update our_information.md
+
+commit 5c9fe935dff62c9f4356d80e90e780ee89ffee17
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Thu Mar 19 17:36:07 2026 +0800
+
+    Update our_information.md
+
+commit 568a43ddfe830b41678b1d7f0337417a933c1e8a
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Thu Mar 19 17:33:03 2026 +0800
+
+    Delete 王宇.md
+
+commit b2853a7b17636e981a37a055cb1b04cb397ba566
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Thu Mar 19 17:28:08 2026 +0800
+
+    Update our_information.md
+
+commit 836738465cf3cffc312372df793df24ba82760dd
+Author: Orion-Wong2005 <oceanbudis@gmail.com>
+Date:   Thu Mar 19 17:26:01 2026 +0800
+
+    Add files via upload
+
+commit d2063b16d063dcc56467eaf1cf0c73a65121e240
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Thu Mar 19 17:13:30 2026 +0800
+
+    Delete my_information
+
+commit 8117b9d62f62e692c3ee3858a2dfb45aa39d6cb5
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Thu Mar 19 17:10:01 2026 +0800
+
+    Add files via upload
+
+commit 48af033f081e1d37bffa9b9919af0459333bf840
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Thu Mar 19 17:00:13 2026 +0800
+
+    Add personal resume with detailed information
+
+    Added personal resume with details including name, gender, education, contact information, interests, project experience, skills, and awards.
+
+commit d84d641ddf9fe0264648051c0d67e2c921014061
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Thu Mar 19 16:56:01 2026 +0800
+
+    Create my_information
+
+commit 4df03a723555a703e27bccaabc702e3d3961f0a9
+Author: wodezhuchang <98152061+wodezhuchang@users.noreply.github.com>
+Date:   Mon Apr 28 15:22:47 2025 +0800
+
+    Initial commit
+(END)

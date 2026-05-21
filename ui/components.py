@@ -3,7 +3,8 @@ from tkinter import ttk
 from core.book_manager import get_all_books, query_books
 
 class BookListComponent(tk.Frame):
-    def __init__(self, parent, show_search=True, show_add_button=False, show_delete_button=False, on_add_callback=None, on_delete_callback=None):
+    def __init__(self, parent, show_search=True, show_add_button=False, 
+     show_delete_button=False, on_add_callback=None, on_delete_callback=None):
         super().__init__(parent, bg="#f0f0f0")
         self.show_add_button = show_add_button
         self.show_delete_button = show_delete_button

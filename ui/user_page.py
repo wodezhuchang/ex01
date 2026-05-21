@@ -38,7 +38,8 @@ class UserPage(tk.Frame):
         self.label_user_id.grid(row=0, column=1, sticky=tk.W, pady=3)
         
         tk.Label(info_grid, text="用户名：", font=("Helvetica", 10), bg="white").grid(row=1, column=0, sticky=tk.W, pady=3)
-        self.label_username = tk.Label(info_grid, textvariable=self.username_var, font=("Helvetica", 10), bg="white", fg="#27ae60")
+        self.label_username = tk.Label(info_grid, textvariable=self.username_var, 
+        font=("Helvetica", 10), bg="white", fg="#27ae60")
         self.label_username.grid(row=1, column=1, sticky=tk.W, pady=3)
         
         tk.Label(info_grid, text="角色：", font=("Helvetica", 10), bg="white").grid(row=2, column=0, sticky=tk.W, pady=3)

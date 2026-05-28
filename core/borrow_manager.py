@@ -23,6 +23,7 @@ def borrow_book(user_id, book_id):
         if int(target_book.get('count', 0)) <= 0:
             log_error(f"借阅失败：图书ID {book_id} 库存不足")
             return False
+
         
         borrows = read_csv(BORROWS_FILE)
         if any(b['user_id'] == str(user_id) and b['book_id'] == str(book_id) and \

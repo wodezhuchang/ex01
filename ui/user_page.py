@@ -94,7 +94,8 @@ class UserPage(tk.Frame):
         
         borrowed_frame = tk.LabelFrame(stats_grid, text="未归还", bg="#ffeaa7", padx=25, pady=6)
         borrowed_frame.grid(row=0, column=1, padx=8)
-        tk.Label(borrowed_frame, textvariable=self.stats_borrowed_var, font=("Helvetica", 16, "bold"), bg="#ffeaa7", fg="#d63031").pack()
+        tk.Label(borrowed_frame, textvariable=self.stats_borrowed_var, \
+                 font=("Helvetica", 16, "bold"), bg="#ffeaa7", fg="#d63031").pack()
         
         returned_frame = tk.LabelFrame(stats_grid, text="已归还", bg="#dfe6e9", padx=25, pady=6)
         returned_frame.grid(row=0, column=2, padx=8)

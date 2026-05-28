@@ -25,7 +25,8 @@ def borrow_book(user_id, book_id):
             return False
         
         borrows = read_csv(BORROWS_FILE)
-        if any(b['user_id'] == str(user_id) and b['book_id'] == str(book_id) and b['status'] == 'borrowed' for b in borrows):
+        if any(b['user_id'] == str(user_id) and b['book_id'] == str(book_id) and \
+               b['status'] == 'borrowed' for b in borrows):
             log_error(f"借阅失败：用户 {user_id} 已借阅图书 {book_id}")
             return False
         
